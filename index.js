@@ -4,21 +4,19 @@ const button = document.getElementById("button");
 
 button.addEventListener("click", function(event){
     event.preventDefault();
-
     const taskValue = task.value;
     const dateValue = new Date(date.value + "T00:00:00");
 
     try{
         addTask(taskValue, dateValue);
     }catch(error){
-        console.log(error);
         alert("Insert a valid Date");
     }
 
 });
 
 function addTask(taskValue, dateValue){
-    
+
     if(taskValue == ""){
         alert("Insert a Task");
         return
@@ -32,10 +30,14 @@ function addTask(taskValue, dateValue){
     const weekLater = 1000 * 60 * 60 * 24 * 7;
     const color = timeNow + weekLater < timestampDate ? "blue" : "red";
 
+    if(timestampDate < timeNow - 1000 * 60 * 60 * 24){
+        alert("Insert a task for today or later");
+        return
+    }
     
     weekIDHTML.innerHTML +=
     `<div class="task-${color}">
-        <p>${dateValue.getDate()}/${dateValue.getMonth() + 1}/${dateValue.getFullYear()}</p>
-        <p>${taskValue}</p>
+        <p><strong>${dateValue.getDate()}/${dateValue.getMonth() + 1}/${dateValue.getFullYear()}</strong></p>
+        <p><strong>${taskValue}</strong></p>
     </div>`
 };
