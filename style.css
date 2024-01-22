@@ -57,8 +57,16 @@ button{
 
 .task-blue{
     background-color: #87CEFA;
+    transition: 0.3s ease;
 }
 
 .task-red{
     background-color: #FF6347;
+    transition: 0.3s ease;
+}
+
+.done{
+    background-color: #90EE90;
+    text-decoration: line-through;
+    transition: 0.3s ease;
 }
